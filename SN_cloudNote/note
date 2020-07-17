@@ -1,0 +1,19 @@
+1.创建项目SN_CloudNote
+2.导包
+3.导入配置文件
+     1）applicationContext.xml
+     2) SqlMapper.xml
+4.创建Controller类，返回NoteResult结果
+     1）调用service
+     2）将service返回的数据转换为JSON @ResponseBody
+5.创建NoteResult类
+     1）三个属性：status、data、msg
+6.创建Service
+     1)接口
+     2）实现类
+     3)new User对象
+7.创建dao
+8.写SQL语句
+9.创建User对象
+10.在web.xml中配置前端控制器
+11.导入html下所有的材料

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace命名空间(包名.类名）,作用就是对sql进行分类化管理(sql隔离) -->
+<!-- 辅配置文件 -->
+<mapper namespace="com.sn.note.dao.UserDao">
+
+	<!-- register 注册 -->
+   <insert id="save" parameterType="com.sn.note.entity.User">
+        insert into cn_user
+             (cn_user_id,cn_user_name,cn_user_password,cn_user_token,cn_user_nick) 
+                 values
+             (#{cn_user_id},#{cn_user_name},#{cn_user_password},#{cn_user_token},#{cn_user_nick})
+   </insert>
+   
+   <!-- 检查名字（用户名）是否存在 -->
+   <select id="findByName" parameterType="string" resultType="com.sn.note.entity.User">
+        select * from cn_user where cn_user_name=#{cn_user_name}
+   </select>
+   
+   <select id="findById" parameterType="string" resultType="com.sn.note.entity.User">
+        select * from cn_user where cn_user_id=#{cn_user_id}
+   </select>
+   
+   <!--修改用户密码  -->
+   <update id="changePassword"  parameterType="com.sn.note.entity.User"> 
+        update cn_user set cn_user_password = #{cn_user_password} where cn_user_id = #{cn_user_id}
+   </update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

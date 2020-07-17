@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace命名空间(包名.类名）,作用就是对sql进行分类化管理(sql隔离) -->
+<!-- 辅配置文件 -->
+<mapper namespace="com.sn.note.dao.NoteBookDao">
+   
+   <!-- 根据用户id查询其所有的笔记本 -->
+   <select id="findByUserId" parameterType="string" resultType="com.sn.note.entity.NoteBook">
+        select * from cn_notebook where cn_user_id=#{cn_user_id} order by cn_notebook_createtime desc
+   </select>
+   
+   <!-- 根据笔记本名查找笔记本 -->
+   <select id="findByBookName" parameterType="string" resultType="com.sn.note.entity.NoteBook">
+        select * from cn_notebook where cn_notebook_name=#{cn_notebook_name}
+   </select>
+   
+   <!-- 添加笔记本 -->
+  <insert id="save" parameterType="com.sn.note.entity.NoteBook">
+		insert into cn_notebook values(#{cn_notebook_id},#{cn_user_id},
+										#{cn_notebook_type_id},#{cn_notebook_name},
+										#{cn_notebook_desc},#{cn_notebook_createtime})
+  </insert>
+  
+  <!-- 修改笔记本名 -->
+  <update id="renameBook" parameterType="com.sn.note.entity.NoteBook">
+       update cn_notebook set
+	       cn_notebook_name=#{cn_notebook_name} 
+	          where cn_notebook_id=#{cn_notebook_id}
+  </update>
+  
+  <!-- 删除笔记本 -->
+  <delete id="deleteBook" parameterType="string">
+		delete from cn_notebook
+		where cn_notebook_id = #{cn_notebook_id}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+

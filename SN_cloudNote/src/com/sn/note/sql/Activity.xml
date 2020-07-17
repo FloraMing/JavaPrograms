@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace命名空间,作用就是对sql进行分类化管理(sql隔离) -->
+<mapper namespace="com.sn.note.dao.ActivityDao">
+	
+	<!--1.获取所有活动列表 -->   
+    <select id="getAllActivityList" resultType="com.sn.note.entity.Activity">   
+       select * from cn_activity 
+    </select>
+    
+    <!--2.获取指定活动下的所有笔记 -->   
+   <select id="getAllActivityNoteList" parameterType="string"   
+        resultType="com.sn.note.entity.ActivityNote">   
+        select * from cn_note_activity 
+        where cn_activity_id=#{cn_activity_id}   
+    </select>   
+    
+    <!--3.查找指定id的活动笔记 -->   
+    <select id="findActivityNoteById" parameterType="string"   
+        resultType="com.sn.note.entity.ActivityNote"> 
+        select * from cn_note_activity 
+           where cn_note_activity_id=#{cn_note_activity_id}    
+    </select>    
+    
+</mapper>
